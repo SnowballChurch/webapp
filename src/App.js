@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Footer from "./component/Footer";
+import Header from "./component/Header";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import {createBrowserHistory} from "history";
+import {BrowserRouter} from "react-router-dom";
+import WebsiteRouter from "./WebsiteRouter";
+
+import "@fortawesome/fontawesome-free/css/all.min.css"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  }
+}));
+
+// ReactGA.initialize('UA-102646186-1');
+
+const history = createBrowserHistory();
+history.listen((location, action) => {
+  // ReactGA.set({ page: location.pathname });
+  // ReactGA.pageview(location.pathname);
+});
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <BrowserRouter history={history}>
+        <Header />
+        <WebsiteRouter history={history} />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
