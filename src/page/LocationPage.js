@@ -16,6 +16,7 @@ const Banner = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: scroll !important;
 `;
 
 const Title = styled.h1`

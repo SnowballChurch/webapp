@@ -3,8 +3,8 @@ import './App.css';
 import Footer from "./component/Footer";
 import Header from "./component/Header";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {createBrowserHistory} from "history";
-import {BrowserRouter} from "react-router-dom";
+import {createHashHistory} from "history";
+import {HashRouter} from "react-router-dom";
 import WebsiteRouter from "./WebsiteRouter";
 
 import "@fortawesome/fontawesome-free/css/all.min.css"
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 // ReactGA.initialize('UA-102646186-1');
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 history.listen((location, action) => {
   // ReactGA.set({ page: location.pathname });
   // ReactGA.pageview(location.pathname);
@@ -28,11 +28,11 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <BrowserRouter history={history}>
+      <HashRouter history={history}>
         <Header />
         <WebsiteRouter history={history} />
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Page from '../component/Page';
 import {Section, SectionBody, SectionContainer, SectionSubTitle, SectionTitle} from "../component/Section";
 import PaymentMethod from "../component/PaymentMethod";
 import styled from "styled-components";
-import banner from "../static/img/give.jpg";
+import banner from "../static/img/thanks-god.jpg";
 
 const Banner = styled.div`
   display:flex;
@@ -17,6 +17,7 @@ const Banner = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: scroll !important;
 `;
 
 const Title = styled.h1`

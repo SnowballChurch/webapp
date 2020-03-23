@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import banner from '../static/img/la.jpg';
+import banner from '../static/img/la-small.jpeg';
 import Location from "../component/Location";
 import Service from "../component/Service";
 import Leadership from "../component/Leadership";
@@ -12,6 +12,7 @@ const Banner = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 100vw;
   height: 100vh;
   max-height: 100vh;
   background: url(${banner}) no-repeat center center fixed; 
@@ -19,6 +20,7 @@ const Banner = styled.div`
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: scroll !important;
 `;
 
 const Title = styled.h1`

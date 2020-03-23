@@ -15,6 +15,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 import loungeImage from "../static/img/lounge.jpg";
 import churchImage from "../static/img/church.jpg";
+import ServiceApi from "../api/ServiceApi";
+
+const serviceApi = new ServiceApi();
 
 const TimeCard = styled(Card)`
   width: 300px;
@@ -64,7 +67,7 @@ function Service() {
                 <PlaceIcon /> <Link href="#location-church">Snowball Church LA</Link>
               </Content>
               <CardActions>
-                <Button color="secondary" startIcon={<EventAvailableIcon />}>
+                <Button color="secondary" startIcon={<EventAvailableIcon />} onClick={serviceApi.sunday}>
                   Add to my calendar
                 </Button>
               </CardActions>
@@ -85,7 +88,7 @@ function Service() {
                 <PlaceIcon /> <Link href="#location-lounge">Snowball Church Lounge</Link>
               </Content>
               <CardActions>
-                <Button color="secondary" startIcon={<EventAvailableIcon />}>
+                <Button color="secondary" startIcon={<EventAvailableIcon />} onClick={serviceApi.wednesday}>
                   Add to my calendar
                 </Button>
               </CardActions>

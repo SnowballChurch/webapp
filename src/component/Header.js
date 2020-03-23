@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import {Hidden} from "@material-ui/core";
+import {Hidden, Menu} from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -17,6 +17,8 @@ import PlaceIcon from '@material-ui/icons/Place';
 import InfoIcon from '@material-ui/icons/Info';
 
 import logo from '../static/img/logo.png';
+import MenuItem from "@material-ui/core/MenuItem";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
   menuButton: {
@@ -25,11 +27,15 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  paper: {
+    background: '#f4f4f2',
+    color: '#222'
+  }
 }));
 
 const Navbar = styled(AppBar)`
   & {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${props => props.top ? 'transparent' : 'rgba(255, 255, 255, 0.9)' };
     box-shadow: none;
   }
   
@@ -78,6 +84,13 @@ function Header() {
     right: false,
   });
 
+  const [scroll, setScroll] = React.useState(window.scrollY);
+  const handleScroll = () => setScroll(window.scrollY);
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
   const toggleDrawer = (open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -89,17 +102,17 @@ function Header() {
 
   return (
     <div>
-      <Navbar position="fixed">
+      <Navbar position="fixed" top={scroll < 100}>
         <Toolbar variant="dense">
           <Typography className={classes.title} variant="h6">
             <Link to="/"><img src={logo} width={100} /></Link>
           </Typography>
           <Hidden mdDown>
-            <NavButton to="/">About</NavButton>
+            {/*<NavButton to="/">About</NavButton>*/}
             <NavButton to="/locations">Locations</NavButton>
-            <NavButton to="/events">Events</NavButton>
-            <NavButton to="/watch">Watch</NavButton>
-            <NavLink href="https://google.com" target="_blank">Shop</NavLink>
+            {/*<NavButton to="/events">Events</NavButton>*/}
+            {/*<NavButton to="/watch">Watch</NavButton>*/}
+            {/*<NavLink href="https://google.com" target="_blank">Shop</NavLink>*/}
             <NavButton to="/give">Give</NavButton>
           </Hidden>
           <Hidden lgUp>
@@ -109,20 +122,10 @@ function Header() {
           </Hidden>
         </Toolbar>
       </Navbar>
-      <Drawer anchor="right" open={state.sidebar} onClose={toggleDrawer(false)}>
+      <Drawer anchor="right" open={state.sidebar} onClose={toggleDrawer(false)} classes={{ paper: classes.paper }}>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="About" />
-          </ListItem>
-          <ListItem button href="#locations">
-            <ListItemIcon>
-              <PlaceIcon />
-            </ListItemIcon>
-            <ListItemText primary="Locations" />
-          </ListItem>
+          <ListItem component={Link} to="/locations" onClick={toggleDrawer(false)}>Locations</ListItem>
+          <ListItem component={Link} to="/give" onClick={toggleDrawer(false)}>Give</ListItem>
         </List>
       </Drawer>
     </div>
