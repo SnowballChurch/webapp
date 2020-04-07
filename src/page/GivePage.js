@@ -4,6 +4,7 @@ import {Section, SectionBody, SectionContainer, SectionSubTitle, SectionTitle} f
 import PaymentMethod from "../component/PaymentMethod";
 import styled from "styled-components";
 import banner from "../static/img/thanks-god.jpg";
+import Button from "@material-ui/core/Button";
 
 const Banner = styled.div`
   display:flex;
@@ -30,6 +31,20 @@ const Title = styled.h1`
   line-height: 100%;
 `;
 
+const GiveButton = styled(Button)`
+  margin: 20px 0;
+  padding: 10px 30px;
+  background-color: #009900;
+  border: solid 1px #006600;
+  border-radius: 30px;
+  font-size: 20px;
+  color: #fff;
+  
+  &:hover {
+    background-color: #00aa00;
+  }
+`;
+
 function GivePage() {
   return (
     <Page>
@@ -42,6 +57,9 @@ function GivePage() {
           <SectionSubTitle>Tithes and Offerings & Other Initiatives</SectionSubTitle>
           <SectionBody>
             In Malachi, the Bible talks about bringing the first 10% (tithe) of our income into the storehouse (church). If you do, “I will open the windows of heaven for you. I will pour out a blessing so great you won’t have enough room to take it in!”. Let’s believe for God to provide for us as a church, as we obey His Word in bringing our tithes.
+          </SectionBody>
+          <SectionBody>
+            <GiveButton component="a" href="https://pushpay.com/g/snowballchurch" target="_blank">Give Online Now</GiveButton>
           </SectionBody>
           <PaymentMethod />
         </SectionContainer>

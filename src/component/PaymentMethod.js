@@ -10,7 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 
 const PaymentItem = styled(Card)`
   box-shadow: none;
-  width: 200px;
+  width: 220px;
 `;
 
 const Text = styled.p`
@@ -32,7 +32,7 @@ function PaymentMethod() {
   return (
     <Section textAlign="center">
       <Container>
-        <Grid container spacing={5} justify="center">
+        <Grid container spacing={2} justify="center">
           <Grid item>
             <PaymentItem>
               <CardMedia>
@@ -52,6 +52,28 @@ function PaymentMethod() {
               <CardContent>
                 <h3>PayPal</h3>
                 <Text><Link href="https://paypal.me/snowballchurchla" target="_blank">paypal.me/snowballchurchla</Link></Text>
+              </CardContent>
+            </PaymentItem>
+          </Grid>
+          <Grid item>
+            <PaymentItem>
+              <CardMedia>
+                <Icon className="fas fa-mobile-alt" style={{fontSize: '100px', width: '100%'}} />
+              </CardMedia>
+              <CardContent>
+                <h3>Venmo</h3>
+                <Text><Link href="https://venmo.com/snowballchurch-la" target="_blank">snowballchurch-la</Link></Text>
+              </CardContent>
+            </PaymentItem>
+          </Grid>
+          <Grid item>
+            <PaymentItem>
+              <CardMedia>
+                <Icon className="fas fa-dollar-sign" style={{fontSize: '100px', width: '100%'}} />
+              </CardMedia>
+              <CardContent>
+                <h3>Zelle</h3>
+                <Text><Link href="mailto:snowballchuchla@gmail.com" target="_blank">snowballchuchla@gmail.com</Link></Text>
               </CardContent>
             </PaymentItem>
           </Grid>
